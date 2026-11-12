@@ -1,0 +1,425 @@
+{
+  "id": 2,
+  "title": "BLACKOUT ESCAPE",
+  "subtitle": "03 / THE LAST SIGNAL",
+  "size": [
+    52,
+    30
+  ],
+  "spawn": [
+    3,
+    25
+  ],
+  "walls": [
+    [
+      13,
+      1,
+      13,
+      8
+    ],
+    [
+      13,
+      11,
+      13,
+      24
+    ],
+    [
+      27,
+      5,
+      27,
+      17
+    ],
+    [
+      27,
+      20,
+      27,
+      28
+    ],
+    [
+      39,
+      1,
+      39,
+      11
+    ],
+    [
+      39,
+      14,
+      39,
+      26
+    ],
+    [
+      3,
+      16,
+      9,
+      16
+    ],
+    [
+      18,
+      21,
+      23,
+      21
+    ],
+    [
+      31,
+      9,
+      35,
+      9
+    ],
+    [
+      44,
+      20,
+      50,
+      20
+    ]
+  ],
+  "cover": [
+    [
+      6,
+      8
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      19,
+      6
+    ],
+    [
+      20,
+      6
+    ],
+    [
+      21,
+      13
+    ],
+    [
+      32,
+      24
+    ],
+    [
+      33,
+      24
+    ],
+    [
+      44,
+      6
+    ],
+    [
+      45,
+      6
+    ],
+    [
+      43,
+      16
+    ]
+  ],
+  "zones": [
+    [
+      "MAINTENANCE",
+      3,
+      26
+    ],
+    [
+      "AUXILIARY POWER",
+      3,
+      4
+    ],
+    [
+      "LOCKDOWN CONTROL",
+      17,
+      4
+    ],
+    [
+      "INDUSTRIAL FLOOR",
+      30,
+      21
+    ],
+    [
+      "EXIT AIRLOCK",
+      43,
+      3
+    ]
+  ],
+  "objectives": [
+    {
+      "id": "power",
+      "title": "Restore Auxiliary Power",
+      "requires": []
+    },
+    {
+      "id": "override",
+      "title": "Override Lockdown",
+      "requires": [
+        "power"
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "power_console",
+      "kind": "terminal",
+      "cell": [
+        6,
+        5
+      ],
+      "key": "",
+      "objective": "power"
+    },
+    {
+      "id": "power_door",
+      "kind": "door",
+      "cell": [
+        13,
+        9
+      ],
+      "key": "power",
+      "objective": ""
+    },
+    {
+      "id": "override_console",
+      "kind": "terminal",
+      "cell": [
+        22,
+        6
+      ],
+      "key": "",
+      "objective": "override"
+    },
+    {
+      "id": "airlock_door",
+      "kind": "door",
+      "cell": [
+        39,
+        12
+      ],
+      "key": "override",
+      "objective": ""
+    },
+    {
+      "id": "emp03",
+      "kind": "emp",
+      "cell": [
+        17,
+        25
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "med03",
+      "kind": "health",
+      "cell": [
+        30,
+        23
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "cp03",
+      "kind": "checkpoint",
+      "cell": [
+        30,
+        18
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "exit03",
+      "kind": "extraction",
+      "cell": [
+        47,
+        4
+      ],
+      "key": "",
+      "objective": ""
+    }
+  ],
+  "guards": [
+    {
+      "kind": "guard",
+      "cell": [
+        8,
+        20
+      ],
+      "patrol": [
+        [
+          8,
+          20
+        ],
+        [
+          10,
+          20
+        ],
+        [
+          10,
+          25
+        ],
+        [
+          8,
+          25
+        ]
+      ]
+    },
+    {
+      "kind": "guard",
+      "cell": [
+        18,
+        12
+      ],
+      "patrol": [
+        [
+          18,
+          12
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          18,
+          17
+        ]
+      ]
+    },
+    {
+      "kind": "guard",
+      "cell": [
+        33,
+        4
+      ],
+      "patrol": [
+        [
+          33,
+          4
+        ],
+        [
+          36,
+          4
+        ],
+        [
+          36,
+          7
+        ],
+        [
+          33,
+          7
+        ]
+      ]
+    },
+    {
+      "kind": "heavy",
+      "cell": [
+        33,
+        15
+      ],
+      "patrol": [
+        [
+          33,
+          15
+        ],
+        [
+          36,
+          15
+        ],
+        [
+          36,
+          22
+        ],
+        [
+          33,
+          22
+        ]
+      ]
+    },
+    {
+      "kind": "heavy",
+      "cell": [
+        44,
+        9
+      ],
+      "patrol": [
+        [
+          44,
+          9
+        ],
+        [
+          48,
+          9
+        ],
+        [
+          48,
+          15
+        ],
+        [
+          44,
+          15
+        ]
+      ]
+    },
+    {
+      "kind": "drone",
+      "cell": [
+        17,
+        18
+      ],
+      "patrol": [
+        [
+          17,
+          18
+        ],
+        [
+          24,
+          18
+        ]
+      ]
+    },
+    {
+      "kind": "drone",
+      "cell": [
+        43,
+        23
+      ],
+      "patrol": [
+        [
+          43,
+          23
+        ],
+        [
+          48,
+          23
+        ],
+        [
+          48,
+          26
+        ],
+        [
+          43,
+          26
+        ]
+      ]
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        16,
+        6
+      ],
+      "patrol": []
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        41,
+        4
+      ],
+      "patrol": []
+    }
+  ]
+}

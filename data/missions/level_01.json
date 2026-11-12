@@ -1,0 +1,259 @@
+{
+  "id": 0,
+  "title": "ACCESS WING",
+  "subtitle": "01 / TUTORIAL BREACH",
+  "size": [
+    40,
+    24
+  ],
+  "spawn": [
+    3,
+    19
+  ],
+  "walls": [
+    [
+      12,
+      3,
+      12,
+      9
+    ],
+    [
+      12,
+      12,
+      12,
+      17
+    ],
+    [
+      25,
+      1,
+      25,
+      7
+    ],
+    [
+      25,
+      10,
+      25,
+      20
+    ],
+    [
+      3,
+      12,
+      8,
+      12
+    ],
+    [
+      16,
+      17,
+      21,
+      17
+    ],
+    [
+      30,
+      13,
+      35,
+      13
+    ]
+  ],
+  "cover": [
+    [
+      7,
+      6
+    ],
+    [
+      8,
+      6
+    ],
+    [
+      19,
+      8
+    ],
+    [
+      20,
+      8
+    ],
+    [
+      17,
+      13
+    ],
+    [
+      32,
+      6
+    ],
+    [
+      33,
+      6
+    ],
+    [
+      30,
+      18
+    ]
+  ],
+  "zones": [
+    [
+      "RECEIVING",
+      3,
+      20
+    ],
+    [
+      "PERSONNEL",
+      3,
+      4
+    ],
+    [
+      "SECURITY",
+      16,
+      11
+    ],
+    [
+      "EXTRACTION",
+      29,
+      3
+    ]
+  ],
+  "objectives": [
+    {
+      "id": "blue",
+      "title": "Find Blue Keycard",
+      "requires": []
+    },
+    {
+      "id": "security",
+      "title": "Disable North Security Terminal",
+      "requires": [
+        "blue"
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "blue_card",
+      "kind": "keycard",
+      "cell": [
+        5,
+        5
+      ],
+      "key": "blue",
+      "objective": "blue"
+    },
+    {
+      "id": "security_console",
+      "kind": "terminal",
+      "cell": [
+        20,
+        10
+      ],
+      "key": "",
+      "objective": "security"
+    },
+    {
+      "id": "north_door",
+      "kind": "door",
+      "cell": [
+        25,
+        8
+      ],
+      "key": "blue",
+      "objective": ""
+    },
+    {
+      "id": "storage_emp",
+      "kind": "emp",
+      "cell": [
+        6,
+        16
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "med01",
+      "kind": "health",
+      "cell": [
+        18,
+        19
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "cp01",
+      "kind": "checkpoint",
+      "cell": [
+        28,
+        9
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "exit01",
+      "kind": "extraction",
+      "cell": [
+        35,
+        4
+      ],
+      "key": "",
+      "objective": ""
+    }
+  ],
+  "guards": [
+    {
+      "kind": "guard",
+      "cell": [
+        17,
+        6
+      ],
+      "patrol": [
+        [
+          17,
+          6
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          22,
+          13
+        ],
+        [
+          17,
+          13
+        ]
+      ]
+    },
+    {
+      "kind": "guard",
+      "cell": [
+        30,
+        17
+      ],
+      "patrol": [
+        [
+          30,
+          17
+        ],
+        [
+          35,
+          17
+        ],
+        [
+          35,
+          9
+        ],
+        [
+          30,
+          9
+        ]
+      ]
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        27,
+        4
+      ],
+      "patrol": []
+    }
+  ]
+}

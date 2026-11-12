@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dx8hw8dv26oil"
+
+[deps]
+
+source_file="res://docs/ASSET_INVENTORY.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

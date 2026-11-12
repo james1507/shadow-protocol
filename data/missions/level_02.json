@@ -1,0 +1,397 @@
+{
+  "id": 1,
+  "title": "RESEARCH VAULT",
+  "subtitle": "02 / CLASSIFIED RETRIEVAL",
+  "size": [
+    48,
+    30
+  ],
+  "spawn": [
+    3,
+    25
+  ],
+  "walls": [
+    [
+      15,
+      1,
+      15,
+      10
+    ],
+    [
+      15,
+      13,
+      15,
+      25
+    ],
+    [
+      29,
+      4,
+      29,
+      13
+    ],
+    [
+      29,
+      16,
+      29,
+      28
+    ],
+    [
+      35,
+      9,
+      46,
+      9
+    ],
+    [
+      3,
+      17,
+      10,
+      17
+    ],
+    [
+      20,
+      22,
+      25,
+      22
+    ],
+    [
+      34,
+      22,
+      43,
+      22
+    ]
+  ],
+  "cover": [
+    [
+      8,
+      6
+    ],
+    [
+      9,
+      6
+    ],
+    [
+      8,
+      10
+    ],
+    [
+      20,
+      7
+    ],
+    [
+      21,
+      7
+    ],
+    [
+      22,
+      17
+    ],
+    [
+      37,
+      15
+    ],
+    [
+      38,
+      15
+    ],
+    [
+      39,
+      15
+    ],
+    [
+      34,
+      25
+    ]
+  ],
+  "zones": [
+    [
+      "LOADING BAY",
+      3,
+      26
+    ],
+    [
+      "BIOMETRICS",
+      3,
+      3
+    ],
+    [
+      "RESEARCH HUB",
+      18,
+      12
+    ],
+    [
+      "DATA VAULT",
+      34,
+      4
+    ],
+    [
+      "DRONE SHAFT",
+      33,
+      19
+    ]
+  ],
+  "objectives": [
+    {
+      "id": "red",
+      "title": "Get Red Keycard",
+      "requires": []
+    },
+    {
+      "id": "vault",
+      "title": "Hack Vault Terminal \u00b7 3 seconds",
+      "requires": [
+        "red"
+      ]
+    },
+    {
+      "id": "chip",
+      "title": "Collect Data Chip",
+      "requires": [
+        "vault"
+      ]
+    },
+    {
+      "id": "escape",
+      "title": "Unlock Escape Corridor",
+      "requires": [
+        "chip"
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "red_card",
+      "kind": "keycard",
+      "cell": [
+        7,
+        6
+      ],
+      "key": "red",
+      "objective": "red"
+    },
+    {
+      "id": "lab_door",
+      "kind": "door",
+      "cell": [
+        15,
+        11
+      ],
+      "key": "red",
+      "objective": ""
+    },
+    {
+      "id": "vault_console",
+      "kind": "terminal",
+      "cell": [
+        24,
+        11
+      ],
+      "key": "",
+      "objective": "vault"
+    },
+    {
+      "id": "vault_door",
+      "kind": "door",
+      "cell": [
+        29,
+        14
+      ],
+      "key": "vault",
+      "objective": ""
+    },
+    {
+      "id": "data_chip",
+      "kind": "chip",
+      "cell": [
+        40,
+        5
+      ],
+      "key": "",
+      "objective": "chip"
+    },
+    {
+      "id": "escape_console",
+      "kind": "terminal",
+      "cell": [
+        39,
+        17
+      ],
+      "key": "",
+      "objective": "escape"
+    },
+    {
+      "id": "emp02",
+      "kind": "emp",
+      "cell": [
+        19,
+        25
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "med02",
+      "kind": "health",
+      "cell": [
+        5,
+        12
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "cp02",
+      "kind": "checkpoint",
+      "cell": [
+        38,
+        6
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "exit02",
+      "kind": "extraction",
+      "cell": [
+        43,
+        26
+      ],
+      "key": "",
+      "objective": ""
+    }
+  ],
+  "guards": [
+    {
+      "kind": "guard",
+      "cell": [
+        8,
+        21
+      ],
+      "patrol": [
+        [
+          8,
+          21
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          11,
+          26
+        ],
+        [
+          8,
+          26
+        ]
+      ]
+    },
+    {
+      "kind": "guard",
+      "cell": [
+        21,
+        4
+      ],
+      "patrol": [
+        [
+          21,
+          4
+        ],
+        [
+          26,
+          4
+        ],
+        [
+          26,
+          8
+        ],
+        [
+          21,
+          8
+        ]
+      ]
+    },
+    {
+      "kind": "guard",
+      "cell": [
+        36,
+        24
+      ],
+      "patrol": [
+        [
+          36,
+          24
+        ],
+        [
+          43,
+          24
+        ],
+        [
+          43,
+          27
+        ],
+        [
+          36,
+          27
+        ]
+      ]
+    },
+    {
+      "kind": "heavy",
+      "cell": [
+        35,
+        6
+      ],
+      "patrol": [
+        [
+          35,
+          6
+        ],
+        [
+          43,
+          6
+        ]
+      ]
+    },
+    {
+      "kind": "drone",
+      "cell": [
+        34,
+        14
+      ],
+      "patrol": [
+        [
+          34,
+          14
+        ],
+        [
+          42,
+          14
+        ],
+        [
+          42,
+          19
+        ],
+        [
+          34,
+          19
+        ]
+      ]
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        17,
+        5
+      ],
+      "patrol": []
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        32,
+        11
+      ],
+      "patrol": []
+    }
+  ]
+}

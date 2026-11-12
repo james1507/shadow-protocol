@@ -1,0 +1,154 @@
+{
+  "id": 3,
+  "title": "SYSTEMS LAB",
+  "subtitle": "DEV / F4 CYCLES 10\u00b720\u00b740 AGENTS",
+  "size": [
+    30,
+    22
+  ],
+  "spawn": [
+    3,
+    18
+  ],
+  "walls": [
+    [
+      12,
+      3,
+      12,
+      9
+    ],
+    [
+      12,
+      12,
+      12,
+      18
+    ]
+  ],
+  "cover": [
+    [
+      6,
+      6
+    ],
+    [
+      7,
+      6
+    ]
+  ],
+  "zones": [
+    [
+      "LOS WALL",
+      9,
+      3
+    ]
+  ],
+  "objectives": [
+    {
+      "id": "security",
+      "title": "Test terminal",
+      "requires": []
+    }
+  ],
+  "objects": [
+    {
+      "id": "test_door",
+      "kind": "door",
+      "cell": [
+        12,
+        10
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "test_terminal",
+      "kind": "terminal",
+      "cell": [
+        18,
+        5
+      ],
+      "key": "",
+      "objective": "security"
+    },
+    {
+      "id": "test_emp",
+      "kind": "emp",
+      "cell": [
+        5,
+        18
+      ],
+      "key": "",
+      "objective": ""
+    },
+    {
+      "id": "test_checkpoint",
+      "kind": "checkpoint",
+      "cell": [
+        5,
+        15
+      ],
+      "key": "",
+      "objective": ""
+    }
+  ],
+  "guards": [
+    {
+      "kind": "guard",
+      "cell": [
+        9,
+        6
+      ],
+      "patrol": [
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          15
+        ]
+      ]
+    },
+    {
+      "kind": "heavy",
+      "cell": [
+        20,
+        12
+      ],
+      "patrol": [
+        [
+          20,
+          12
+        ],
+        [
+          25,
+          12
+        ]
+      ]
+    },
+    {
+      "kind": "drone",
+      "cell": [
+        22,
+        6
+      ],
+      "patrol": [
+        [
+          22,
+          6
+        ],
+        [
+          25,
+          6
+        ]
+      ]
+    },
+    {
+      "kind": "camera",
+      "cell": [
+        16,
+        4
+      ],
+      "patrol": []
+    }
+  ]
+}

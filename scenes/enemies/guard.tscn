@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_controller.gd" id="1"]
+[ext_resource type="Resource" path="res://config/balance/guard.tres" id="2"]
+[sub_resource type="CircleShape2D" id="Body"]
+radius = 8.0
+[node name="Guard" type="CharacterBody2D"]
+z_index = 4
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1")
+kind = "guard"
+config = ExtResource("2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Body")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 6.0
+radius = 8.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

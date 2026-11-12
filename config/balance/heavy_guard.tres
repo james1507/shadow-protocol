@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+[ext_resource type="Script" path="res://resources/enemy_config.gd" id="1"]
+[resource]
+script = ExtResource("1")
+speed = 44.0
+vision_radius = 165.0
+fov = 100.0
