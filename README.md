@@ -38,7 +38,7 @@ godot --path .
 Engine installed for this workspace on the current Mac:
 
 ```sh
-/Users/cmc-macmini/.local/share/shadow-protocol/Godot.app/Contents/MacOS/Godot --path /Users/cmc-macmini/projects/shadow-protocol
+/Users/[Your-Mac]/.local/share/shadow-protocol/Godot.app/Contents/MacOS/Godot --path /Users/[Your-Mac]/projects/shadow-protocol
 ```
 
 Windows/Linux source setup uses the same Godot version and Import/F5 steps. Native builds require matching official export templates; `export_presets.cfg` supplies all three desktop presets. No Python runtime is used by gameplay.
