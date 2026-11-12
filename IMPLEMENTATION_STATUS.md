@@ -6,10 +6,10 @@
 
 - Godot 4.7.2.stable.official.ed1daf0bf, existing local engine.
 - Local validation: **35/35 gameplay + 14/14 Godot art + 9/9 original Python asset + 5/5 new character intake checks**, **3/3 physical-input campaign missions with active AI**, no final SCRIPT ERROR / ERROR.
-- Actual art gates: **19 PASS / 0 FAIL / 3 BLOCKED**. Optional real premium/free integration and actual remote V2 clone cannot be tested yet. See docs/ART_QA_REPORT.md for each ART-01..22.
+- Actual art gates: **20 PASS / 0 FAIL / 2 BLOCKED**. Optional real premium/free integration remains untested. See docs/ART_QA_REPORT.md for each ART-01..22.
 - 20 level reloads keep one player, one visual per actor and stable signal counts; colliders remain unchanged through stun.
 - Two real builds produce byte-identical 12 SpriteFrames/profile resources.
-- Clean source copy without .godot or incoming_assets: editor import, art suite and menu startup passed. This is not falsely called a remote Git clone.
+- Clean Git clone of V2 commit 70c594f without .godot or incoming_assets: editor import, all 14 art checks and menu startup passed. Logs: docs/logs/v2-git-clone-{import,art,smoke}.log.
 - Actual graphical source lab viewed at 1280x720; real 640x360 runtime captures in docs/screenshots/character_showcase and v2-*.png. Fixed clipped Quit exposed by initial graphical review. Owner aesthetic approval remains pending.
 - Graphical 10/20/40 guard timing samples: docs/v2-benchmark.json, M2 Pro / Compatibility renderer, VSync requested/F3 off. Mean process-frame intervals about 7.11/6.90/6.91ms; p95 12.28/10.05/10.94ms. Not a display-refresh measurement or a V1 optimization claim; M1 unmeasured.
 - Actual V2 macOS/Windows/Linux exports succeeded under builds/v2, preserving V1 builds. macOS entry-menu CLI smoke and native exported keyboard movement/EMP/pause/menu review passed. Full V2 campaign completion is automated input; previous complete native-human-input campaign is V1 evidence. Windows/Linux not executed on target OSes.

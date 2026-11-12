@@ -39,11 +39,11 @@ Actual local results: 35/35 V1 gameplay checks; 14/14 Godot art checks; 9/9 orig
 | ART-17 | PASS | viewport/keep/integer + nearest; genuine 640x360 capture and 1280x720 native lab viewed |
 | ART-18 | PASS | Real graphical 10/20/40-agent samples in docs/v2-benchmark.json; M2 Pro only, no M1 guarantee |
 | ART-19 | PASS | 20 real level reloads: stable signal counts, single player, exactly one visual per actor |
-| ART-20 | BLOCKED | Clean source-copy import/art/startup PASSED. V2 has not been committed/pushed, so a clean clone of remote V2 cannot yet be tested |
+| ART-20 | PASS | Actual clean Git clone of V2 commit 70c594f: editor import, 14 art checks and menu startup passed without .godot or incoming_assets. Logs: docs/logs/v2-git-clone-{import,art,smoke}.log |
 | ART-21 | PASS | 12 resources byte-identical after two actual builder runs |
 | ART-22 | PASS | Original labels/credits, original source code and genuine runtime captures; human aesthetic review pending |
 
-Gate summary: **19 PASS, 0 FAIL, 3 BLOCKED**. Blocked gates concern optional real vendor packs and unpublished remote V2; original mode remains runnable. Agent visual inspection does not substitute for owner's subjective art approval.
+Gate summary: **20 PASS, 0 FAIL, 2 BLOCKED**. Blocked gates concern optional real vendor packs; original mode remains runnable. Agent visual inspection does not substitute for owner's subjective art approval.
 
 ## Manual visual review
 

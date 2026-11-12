@@ -99,7 +99,7 @@ godot --headless --path . --script res://tests/playthrough.gd
 python3 tests/test_asset_tools.py
 ```
 
-Current local results: **35 gameplay + 14 Godot art checks**, **9 original + 5 character-intake Python checks**, and **3/3 campaign missions**. ART gates: 19 PASS, 0 FAIL, 3 BLOCKED (optional real premium/free integration and unpublished remote V2 clone). Detailed acceptance status: [art QA](docs/ART_QA_REPORT.md) and IMPLEMENTATION_STATUS.md. Tests use isolated save files. Local validation includes clean import, menu startup, scene integration and a real three-mission playthrough; hosted CI has not been run. [Test plan](docs/TEST_PLAN.md).
+Current local results: **35 gameplay + 14 Godot art checks**, **9 original + 5 character-intake Python checks**, and **3/3 campaign missions**. ART gates: 20 PASS, 0 FAIL, 2 BLOCKED (optional real premium/free integration). Detailed acceptance status: [art QA](docs/ART_QA_REPORT.md) and IMPLEMENTATION_STATUS.md. Tests use isolated save files. Local validation includes clean Git clone import, art checks, menu startup, scene integration and a real three-mission playthrough; hosted CI has not been run. [Test plan](docs/TEST_PLAN.md).
 
 ## Project map
 
