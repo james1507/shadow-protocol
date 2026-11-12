@@ -1,0 +1,39 @@
+{
+  "cpu": "Apple M2 Pro",
+  "debug_overlay": false,
+  "os": "macOS",
+  "renderer": "Apple M2 Pro",
+  "resolution": [
+    1280,
+    720
+  ],
+  "samples": [
+    {
+      "agents": 10,
+      "fps": 140.587843748938,
+      "frames": 422,
+      "max_ms": 15.748,
+      "mean_ms": 7.11299052132702,
+      "p95_ms": 12.28
+    },
+    {
+      "agents": 20,
+      "fps": 144.875648401788,
+      "frames": 435,
+      "max_ms": 11.167,
+      "mean_ms": 6.90247126436782,
+      "p95_ms": 10.049
+    },
+    {
+      "agents": 40,
+      "fps": 144.816903162102,
+      "frames": 435,
+      "max_ms": 11.743,
+      "mean_ms": 6.90527126436782,
+      "p95_ms": 10.943
+    }
+  ],
+  "version": "2.0.0",
+  "visual_mode": "ORIGINAL_FALLBACK",
+  "vsync": true
+}

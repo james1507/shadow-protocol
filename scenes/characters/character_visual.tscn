@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/characters/character_visual.gd" id="1"]
+[node name="CharacterVisual" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="EquipmentAnchor" type="Marker2D" parent="."]
+[node name="StatusVFX" type="Node2D" parent="."]

@@ -55,3 +55,8 @@ Every enemy scene includes NavigationAgent2D. In test_arena, the heavy guard act
 SaveManager validates version/types/finite values, map bounds/walls/cover, mission IDs/prerequisites, door/pickup IDs and result statistics before application. Temp write + flush + same-filesystem rename replaces the old save only after successful write. Corrupt/future-version input is rejected, preserved and copied to an `.invalid-*` backup. Continue is disabled for invalid save data. Level validates again before restore. Retry restores checkpoint state with fresh enemies and spawn grace; finale timer resets to 90 seconds.
 
 Settings are independent from mission saves. UI pause runs PROCESS_MODE_ALWAYS; world simulation inherits paused processing. Debug drawing is gated by OS.is_debug_build(). Release excludes arena/test/tool/docs content.
+
+
+## V2 visuals
+
+Player/Guard/Heavy/Drone instantiate CharacterVisual. Registry resolves semantic actor keys to immutable shared CharacterVisualProfile/SpriteFrames resources; JSON roster is included in exports. Each instance owns playback/action/status state only. Player damage signal and AttackService/FSM trigger presentation, never animation-derived damage. Timed stun, save schema and collider transforms remain V1. Root/world/enemy/interactable Y sorting lets original server props occlude actors by feet. Ground and solid walls render behind, preserving collision/nav geometry. See CHARACTER_ART_BIBLE.md for exact region/pivot/fallback policy.

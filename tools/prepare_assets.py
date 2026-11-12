@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Copy only exact explicitly reviewed CC0 mappings; never modify intake."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -14,8 +15,8 @@ def contained(base, relative):
     return path
 
 
-def prepare():
-    mapping = json.loads((ROOT / "config/asset_mapping.json").read_text())
+def prepare(mapping_path=ROOT / "config/asset_mapping.json"):
+    mapping = json.loads(mapping_path.read_text())
     for entry in mapping["assets"]:
         if entry.get("license_id") != "CC0-1.0" or entry.get("reviewed") is not True:
             raise ValueError("Asset requires explicit human-reviewed CC0 mapping")
@@ -34,4 +35,6 @@ def prepare():
 
 
 if __name__ == "__main__":
-    prepare()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--mapping", type=Path, default=ROOT / "config/asset_mapping.json")
+    prepare(parser.parse_args().mapping)

@@ -1,3 +1,46 @@
+# V2 implementation status — 2026-11-12
+
+**VISUAL_MODE=ORIGINAL_FALLBACK.** V2 upgrades existing V1 in place. Six original MIT pixel actors, 216 nonempty semantic animation clips, CharacterVisual on all four gameplay actor types, fixed feet, nearest/integer scaling, Y-sorted server props, scientist silhouette and Level 3 alternate guards. No premium/free asset ZIP supplied, purchased or adopted.
+
+## Current verification
+
+- Godot 4.7.2.stable.official.ed1daf0bf, existing local engine.
+- Local validation: **35/35 gameplay + 14/14 Godot art + 9/9 original Python asset + 5/5 new character intake checks**, **3/3 physical-input campaign missions with active AI**, no final SCRIPT ERROR / ERROR.
+- Actual art gates: **19 PASS / 0 FAIL / 3 BLOCKED**. Optional real premium/free integration and actual remote V2 clone cannot be tested yet. See docs/ART_QA_REPORT.md for each ART-01..22.
+- 20 level reloads keep one player, one visual per actor and stable signal counts; colliders remain unchanged through stun.
+- Two real builds produce byte-identical 12 SpriteFrames/profile resources.
+- Clean source copy without .godot or incoming_assets: editor import, art suite and menu startup passed. This is not falsely called a remote Git clone.
+- Actual graphical source lab viewed at 1280x720; real 640x360 runtime captures in docs/screenshots/character_showcase and v2-*.png. Fixed clipped Quit exposed by initial graphical review. Owner aesthetic approval remains pending.
+- Graphical 10/20/40 guard timing samples: docs/v2-benchmark.json, M2 Pro / Compatibility renderer, VSync requested/F3 off. Mean process-frame intervals about 7.11/6.90/6.91ms; p95 12.28/10.05/10.94ms. Not a display-refresh measurement or a V1 optimization claim; M1 unmeasured.
+- Actual V2 macOS/Windows/Linux exports succeeded under builds/v2, preserving V1 builds. macOS entry-menu CLI smoke and native exported keyboard movement/EMP/pause/menu review passed. Full V2 campaign completion is automated input; previous complete native-human-input campaign is V1 evidence. Windows/Linux not executed on target OSes.
+- Native test production save backed up and restored byte-for-byte. Automated tests/captures use isolated saves; save schema remains version 1.
+- Existing local Git baseline ab11d7b; origin already configured by owner. V2 publication was subsequently authorized by owner. Release target: https://github.com/james1507/shadow-protocol/releases/tag/v2.0.0. Prior untracked release-preview.jpg remains outside commit/release.
+
+## V2 stages
+
+All stages use ORIGINAL_FALLBACK, original code/PNG provenance under LICENSE. Exact build/test commands are in docs/SETUP.md, CHARACTER_ART_BIBLE.md and ART_QA_REPORT.md. Actual local logs are ignored under docs/logs.
+
+| Stage | Result / files / evidence | Remaining review |
+|---|---|---|
+| V2-0 Audit | PASS: existing V1 preserved; sibling ZIP backup made before edits; ART_MIGRATION_PLAN.md; exact engine version | none |
+| V2-1 Verify | PASS fallback: actual intake empty; inspect_character_pack.py, registry/license audit; safe intake fixtures pass | optional premium/free ZIP absent |
+| V2-2 Data | PASS: roster, profile Resource, six PNGs, six SpriteFrames, six profiles, 216-row matrix; actual builder + resource bounds/nonblank tests | vendor mappings await real metadata |
+| V2-3 Component | PASS: CharacterVisual scene/API, registry, player/enemy/attack/hack signal wiring; 35 V1 checks + campaign retained | full owner playtest |
+| V2-4 Cohesion | PASS fallback: integer viewport, fixed colliders, shared palette/shadows, Y-sorted original server props | full wall-top occlusion not added; human aesthetics |
+| V2-5 Showcase | PASS: selectors, nine states, four facings at 2x and detail 4x, all six cast; native view + true captures | owner subjective review |
+| V2-6 QA | PASS locally: 49 Godot + 14 Python checks, 3/3 campaign, clean source copy, reload/rebuild checks, actual graphical benchmark | target M1, Windows/Linux runtime, blind duration |
+| V2-7 Portfolio | PASS local source/builds/docs/screenshots: README, art bible/matrix, audit, QA, video guide, release report and V2 source ZIP | publication validation recorded below; no video |
+
+## V2 limits
+
+Original mode is intentionally disclosed; no premium visual quality claim. Attack/hurt/interact/crouch/stunned use documented held poses and engine FX; KO uses an original fallen frame. Campaign enemies retain timed V1 stun, not a new permanent-death mechanic. No fabricated vendor rows or unsafe mirroring. No 15–25-minute blind-human duration result, M1 measurement, Windows/Linux runtime proof, notarization, hosted CI or new V2 recorded video. Mac app is ad-hoc signed.
+
+---
+
+# V1 historical report (before owner GitHub setup)
+
+The following records V1 evidence and historical repository state, not current V2 Git state.
+
 # Implementation status — 2026-11-12
 
 **Playable native release candidate.** Three authored missions completed through actual macOS desktop keyboard input and through the automated physical-input campaign. Godot 4.7.2 Standard, original art/audio, no external runtime dependencies. Source remains uncommitted in a new local Git repository; no remote, upload or hosted CI run.

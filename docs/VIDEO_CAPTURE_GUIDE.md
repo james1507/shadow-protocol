@@ -13,3 +13,8 @@ Use native screen recording of actual Godot or exported application. Current scr
 | 5:00–6:00 | Mission results, three-level progression and source architecture |
 
 Do not edit developer repositioning into footage presented as a normal completion. Use debug arena for controlled engineering demonstrations and label it. Play at normal time for public footage; automated tests accelerate simulation for turnaround.
+
+
+## V2 character segment (60–90 seconds)
+
+Record actual game, not vendor previews. Start with CHARACTER LAB: show all four player directions at 2x, inspect 4x detail, switch idle/walk/attack/KO, then show heavy armor and drone stun. In Level 1 demonstrate keyboard movement, pointer aim, crouch/sprint and terminal interaction. Show guard suspicion/chase, EMP disable and F3 displaying both AI state and visual clip/facing. Include HUD and one foreground server passage. Label footage ORIGINAL_FALLBACK; all sprites are original MIT. No recorded V2 video is included yet.

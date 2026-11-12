@@ -23,6 +23,10 @@ func _ready() -> void:
 		content.add_child(continue_button)
 		content.add_child(UIStyle.button("03   SETTINGS", func(): get_tree().change_scene_to_file("res://scenes/menus/settings_menu.tscn")))
 		content.add_child(UIStyle.button("04   CREDITS", func(): get_tree().change_scene_to_file("res://scenes/menus/credits.tscn")))
+		if OS.is_debug_build():
+			var lab := UIStyle.button("CHARACTER LAB", func(): get_tree().change_scene_to_file("res://scenes/dev/character_showcase.tscn"))
+			lab.position = Vector2(365,325)
+			add_child(lab)
 		content.add_child(UIStyle.button("05   QUIT", GameManager.quit_game))
 	elif screen == "settings":
 		content.add_child(UIStyle.label("SETTINGS", 20, UIStyle.CYAN))

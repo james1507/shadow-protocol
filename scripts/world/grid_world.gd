@@ -12,12 +12,17 @@ func center(cell: Vector2i) -> Vector2:
 	return Vector2(cell * 32) + Vector2(16, 16)
 
 func build(data: Dictionary) -> void:
+	y_sort_enabled = true
 	definition = data
 	grid_size = Vector2i(int(data.size[0]), int(data.size[1]))
 	var image := Image.create(64, 32, false, Image.FORMAT_RGBA8)
 	for x in range(64):
 		for y in range(32):
 			var color := Color("162635") if x < 32 else Color("243444")
+			if x < 32 and y in [6,25] and x % 32 in [5,26]:
+				color = Color("304357")
+			if x >= 32 and y in [4,18,23] and x % 32 > 4 and x % 32 < 27:
+				color = Color("405468")
 			if y == 0 or x % 32 == 0:
 				color = Color("1c3040") if x < 32 else Color("3c5365")
 			if x >= 32 and y >= 27:
@@ -45,10 +50,12 @@ func build(data: Dictionary) -> void:
 	wall_data.set_collision_polygon_points(0, 0, PackedVector2Array([Vector2(-16,-16), Vector2(16,-16), Vector2(16,16), Vector2(-16,16)]))
 	var ground := TileMapLayer.new()
 	ground.name = "Ground"
+	ground.z_index = -10
 	ground.tile_set = tiles
 	add_child(ground)
 	walls = TileMapLayer.new()
 	walls.name = "Walls"
+	walls.z_index = -1
 	walls.tile_set = tiles
 	add_child(walls)
 	for x in range(grid_size.x):
@@ -65,6 +72,11 @@ func build(data: Dictionary) -> void:
 		solid_cells[Vector2i(cell_data[0], cell_data[1])] = true
 	for cell in solid_cells:
 		walls.set_cell(cell, 0, Vector2i(1, 0))
+	for cell in definition.cover:
+		var prop = load("res://scripts/world/foreground_prop.gd").new()
+		prop.position = center(Vector2i(cell[0],cell[1]))
+		prop.accent = Color("54d8e8") if int(data.get("id",0)) == 0 else Color("b29bff")
+		add_child(prop)
 	path_grid.region = Rect2i(Vector2i.ZERO, grid_size)
 	path_grid.cell_size = Vector2(32, 32)
 	path_grid.offset = Vector2(16, 16)
@@ -96,8 +108,3 @@ func _draw() -> void:
 		var at := center(Vector2i(zone[1], zone[2]))
 		draw_string(ThemeDB.fallback_font, at, zone[0], HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("527080"))
 		draw_line(at + Vector2(0, 8), at + Vector2(105, 8), Color("284756"), 2)
-	for c in definition.cover:
-		var at := center(Vector2i(c[0], c[1]))
-		draw_rect(Rect2(at - Vector2(12, 12), Vector2(24, 24)), Color("3b4b50"))
-		draw_rect(Rect2(at - Vector2(9, 9), Vector2(18, 18)), Color("75806c"), false, 1)
-		draw_line(at - Vector2(9, 9), at + Vector2(9, 9), Color("75806c"))

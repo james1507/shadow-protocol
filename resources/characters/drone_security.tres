@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterVisualProfile" format=3]
+
+[ext_resource type="SpriteFrames" path="res://resources/characters/drone_security_frames.tres" id="resource_000"]
+[ext_resource type="Script" path="res://resources/character_visual_profile.gd" id="resource_001"]
+
+[resource]
+script = ExtResource("resource_001")
+actor_key = &"drone_security"
+frames = ExtResource("resource_000")
+accent = Color(0.69803923, 0.60784316, 1, 1)

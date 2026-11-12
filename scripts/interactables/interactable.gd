@@ -64,6 +64,7 @@ func interact(actor: PlayerController) -> bool:
 		"terminal":
 			if not is_instance_valid(hack_actor):
 				hack_actor = actor
+				actor.visual.set_status(&"interact", true)
 				hack_start_health = actor.health.current
 				hack_progress = 0.0
 				AudioManager.play_sfx("terminal")
@@ -111,12 +112,14 @@ func _physics_process(delta: float) -> void:
 	door_visual = move_toward(door_visual, 1.0 if opened else 0.0, delta * 3.0)
 	if is_instance_valid(hack_actor):
 		if hack_actor.health.dead or hack_actor.global_position.distance_to(global_position) > 40.0 or hack_actor.health.current < hack_start_health:
+			hack_actor.visual.set_status(&"interact", false)
 			hack_actor = null
 			hack_progress = 0.0
 			EventBus.notification.emit("Hack canceled · stay close and avoid damage")
 		else:
 			hack_progress += delta / hacking_seconds
 			if hack_progress >= 1.0:
+				hack_actor.visual.set_status(&"interact", false)
 				hack_actor = null
 				used = true
 				level.picked_ids[item_id] = true

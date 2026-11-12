@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterVisualProfile" format=3]
+
+[ext_resource type="SpriteFrames" path="res://resources/characters/guard_standard_frames.tres" id="resource_000"]
+[ext_resource type="Script" path="res://resources/character_visual_profile.gd" id="resource_001"]
+
+[resource]
+script = ExtResource("resource_001")
+actor_key = &"guard_standard"
+frames = ExtResource("resource_000")
+accent = Color(0.95686275, 0.72156864, 0.3764706, 1)

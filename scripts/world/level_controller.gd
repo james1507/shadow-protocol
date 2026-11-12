@@ -23,6 +23,7 @@ var enemy_root: Node2D
 var debug_offset: int = 0
 
 func _ready() -> void:
+	y_sort_enabled = true
 	var path := "res://data/missions/level_0%d.json" % (level_id + 1) if level_id < 3 else "res://data/missions/test_arena.json"
 	definition = JSON.parse_string(FileAccess.get_file_as_string(path))
 	if level_id < 3:
@@ -37,6 +38,7 @@ func _ready() -> void:
 	add_child(mission)
 	var interactables := Node2D.new()
 	interactables.name = "Interactables"
+	interactables.y_sort_enabled = true
 	add_child(interactables)
 	for entry in definition.objects:
 		var scene_name: String = {"health": "health_pickup", "emp": "emp_pickup", "chip": "data_chip", "extraction": "extraction_zone"}.get(entry.kind, entry.kind)
@@ -66,6 +68,7 @@ func _ready() -> void:
 	add_child(combat)
 	enemy_root = Node2D.new()
 	enemy_root.name = "Enemies"
+	enemy_root.y_sort_enabled = true
 	add_child(enemy_root)
 	if level_id == 3:
 		var region := NavigationRegion2D.new()
@@ -80,6 +83,12 @@ func _ready() -> void:
 	if not GameManager.pending_save.is_empty() and level_id < 3:
 		restore(GameManager.pending_save)
 		GameManager.pending_save.clear()
+	if level_id == 0:
+		var scientist: CharacterVisual = preload("res://scenes/characters/character_visual.tscn").instantiate()
+		scientist.name = "ScientistSilhouette"
+		scientist.actor_key = &"npc_scientist"
+		scientist.position = world.center(Vector2i(17,5))
+		add_child(scientist)
 	checkpoint_data = snapshot(player.position)
 	if level_id < 3:
 		SaveManager.write_save(checkpoint_data)
@@ -99,6 +108,8 @@ func spawn_enemies() -> void:
 		enemy.use_navigation_agent = level_id == 3 and entry.kind == "heavy"
 		for cell in entry.patrol:
 			enemy.patrol.append(world.center(Vector2i(cell[0], cell[1])))
+		if level_id == 2 and entry.kind == "guard":
+			enemy.get_node("CharacterVisual").actor_key = &"guard_alternate"
 		enemy_root.add_child(enemy)
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,127 @@
+{
+  "schema_version": 2,
+  "visual_mode": "ORIGINAL_FALLBACK",
+  "selection_policy": "premium_if_verified_else_free_if_verified_else_original",
+  "characters": {
+    "player_agent": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/player_agent.png",
+      "runtime_resource": "res://resources/characters/player_agent.tres",
+      "accent": "54d8e8",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "guard_standard": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/guard_standard.png",
+      "runtime_resource": "res://resources/characters/guard_standard.tres",
+      "accent": "f4b860",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "guard_alternate": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/guard_alternate.png",
+      "runtime_resource": "res://resources/characters/guard_alternate.tres",
+      "accent": "f4b860",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "guard_heavy": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/guard_heavy.png",
+      "runtime_resource": "res://resources/characters/guard_heavy.tres",
+      "accent": "f16d70",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "drone_security": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/drone_security.png",
+      "runtime_resource": "res://resources/characters/drone_security.tres",
+      "accent": "b29bff",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    },
+    "npc_scientist": {
+      "source_pack": "original",
+      "source_png": "res://assets/characters/generated/npc_scientist.png",
+      "runtime_resource": "res://resources/characters/npc_scientist.tres",
+      "accent": "47dbb4",
+      "visual_frame_size": [
+        32,
+        32
+      ],
+      "pivot_px": [
+        16,
+        27
+      ],
+      "required_directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ]
+    }
+  }
+}

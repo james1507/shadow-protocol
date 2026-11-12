@@ -2,17 +2,21 @@
 
 A native Godot stealth-action game: recover classified research, break security, and escape three authored blacksite sectors.
 
-![Actual Godot gameplay](docs/screenshots/gameplay.png)
+![Actual V2 Godot gameplay](docs/screenshots/v2-level-1.png)
 
-Eight-way movement, crouch/sprint, guards with eight-state AI, wall-blocked vision and hearing, heavy guards, sweeping cameras and drones. Keycards, cancelable terminal hacks, stun baton, EMP, objective dependencies, checkpoint saves, mission grades and a live F3 developer overlay. Original procedural visuals and synthesized audio run offline with zero asset downloads.
+Eight-way movement, crouch/sprint, guards with eight-state AI, wall-blocked vision and hearing, heavy guards, sweeping cameras and drones. Keycards, cancelable terminal hacks, stun baton, EMP, objective dependencies, checkpoint saves, mission grades and a live F3 developer overlay. V2 adds six original 32px pixel characters, four-direction SpriteFrames, independent CharacterVisual profiles, damage/KO/stun overlays, fixed feet pivots, server foreground Y sorting and an interactive character lab. Synthesized audio and all assets run offline with zero downloads.
+
+**VISUAL_MODE=ORIGINAL_FALLBACK.** Neither Riclmbr nor MurphysDad ZIP was supplied. Included art is original MIT work. No premium or vendor-animation claim.
+
+![Actual V2 character lab](docs/screenshots/character_showcase/idle.png)
 
 Three compact missions are implemented. Automated known-route completion takes roughly 3–4 simulated minutes; the requested 15–25-minute blind human experience has not been measured. Native desktop playthrough has completed all three missions, including death/checkpoint retry. Target-device tuning and blind play duration remain review tasks.
 
 ## Play
 
-Local macOS/Windows/Linux exports and their actual verification state are recorded in [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md). Build artifacts are under ignored `builds/`, not hosted downloads. No video or online release link is claimed.
+Local macOS/Windows/Linux exports and their actual verification state are recorded in [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md). Download V2 desktop builds, source ZIP and SHA-256 checksums from [Releases](https://github.com/james1507/shadow-protocol/releases/tag/v2.0.0). Local copies remain under ignored `builds/v2/`. No gameplay video is included.
 
-On this Mac, unpack `builds/macos/ShadowProtocol.zip`, open the extracted app. The local build uses ad-hoc signing and is not notarized for public distribution. Source remains editable in Godot.
+On this Mac, unpack `builds/v2/macos/ShadowProtocol-v2.zip`, open the extracted app. The local build uses ad-hoc signing and is not notarized for public distribution. Source remains editable in Godot.
 
 ## Run from source
 
@@ -20,7 +24,8 @@ Install **Godot 4.7.2 stable Standard**, no .NET required: [official archive](ht
 
 1. Open Godot Project Manager, Import this folder's `project.godot`.
 2. Wait for import, press F5. Choose **New Operation**; Continue appears only for a valid save.
-3. F6 on `scenes/levels/test_arena.tscn` runs isolated developer arena.
+3. F6 on `scenes/dev/character_showcase.tscn` opens the 2x/4x character lab; select actor/action. The source main menu also provides CHARACTER LAB.
+4. F6 on `scenes/levels/test_arena.tscn` runs isolated developer arena.
 
 Or from terminal in this folder:
 
@@ -74,11 +79,11 @@ Details: [architecture](docs/ARCHITECTURE.md), [gameplay](docs/GAMEPLAY_SYSTEMS.
 
 ## Debugging and performance
 
-![Actual debug arena](docs/screenshots/debug.png)
+![Actual V2 debug capture](docs/screenshots/v2-debug.png)
 
 F3 exposes real FPS, position/velocity, state counts, nearest detection/path/last-seen, projectiles, items and bounded event history. Rays/cones clip against physical walls. Reproducible workflows cover FSMs, wall perception, door navigation, stress profiling and adding a terminal.
 
-Measured graphical arena on available M2 Pro / 16 GB: ~117–120 FPS with 10/20/40 active guards, VSync on and F3 off. See [method and limitations](docs/PERFORMANCE.md). M1 performance and long-duration frame pacing remain unmeasured.
+V2 graphical 10/20/40-guard measurements on M2 Pro are recorded in [raw timings](docs/v2-benchmark.json) and [art QA](docs/ART_QA_REPORT.md). Process-frame cadence is not a display-refresh measurement. No V1 speedup claim. M1 and long-duration frame pacing remain unmeasured.
 
 ## Tests
 
@@ -86,13 +91,15 @@ Measured graphical arena on available M2 Pro / 16 GB: ~117–120 FPS with 10/20/
 GODOT=godot tools/validate_project.sh
 # Focused suite:
 godot --headless --path . --script res://tests/run_tests.gd
+# Character resource/state/reload checks:
+godot --headless --path . --script res://tests/character_visual_tests.gd
 # Physical input-driven campaign with active AI:
 godot --headless --path . --script res://tests/playthrough.gd
 # Asset trust-boundary checks:
 python3 tests/test_asset_tools.py
 ```
 
-Actual counts and acceptance status are maintained in IMPLEMENTATION_STATUS.md. Tests use isolated save files. Local validation includes clean import, menu startup, scene integration and a real three-mission playthrough; hosted CI has not been run. [Test plan](docs/TEST_PLAN.md).
+Current local results: **35 gameplay + 14 Godot art checks**, **9 original + 5 character-intake Python checks**, and **3/3 campaign missions**. ART gates: 19 PASS, 0 FAIL, 3 BLOCKED (optional real premium/free integration and unpublished remote V2 clone). Detailed acceptance status: [art QA](docs/ART_QA_REPORT.md) and IMPLEMENTATION_STATUS.md. Tests use isolated save files. Local validation includes clean import, menu startup, scene integration and a real three-mission playthrough; hosted CI has not been run. [Test plan](docs/TEST_PLAN.md).
 
 ## Project map
 
@@ -105,15 +112,16 @@ Actual counts and acceptance status are maintained in IMPLEMENTATION_STATUS.md. 
 
 ## Assets and license
 
-Code, original geometry, generated tiles, icon and synthesized sounds: [MIT](LICENSE). Godot's built-in font and runtime remain under engine/dependency licenses. No external art, fonts or audio packs adopted.
+Code, original pixel sprites/geometry, generated tiles, icon and synthesized sounds: [MIT](LICENSE). Godot's built-in font and runtime remain under engine/dependency licenses. No external art, fonts or audio packs adopted.
 
-Optional assets: put official ZIPs in `incoming_assets/`, run inventory, review licenses and exact files, fill `config/asset_mapping.json`, then prepare. Each mapping requires `reviewed: true`, `license_id: "CC0-1.0"`, exact source/destination/usage and SHA-256. Optional frame dimensions use the first verified frame only; no guessed animation slicing. Missing/unverified mapping retains native fallback. [Vietnamese setup guide](ASSET_SETUP_GUIDE_VI.md), [publisher links](docs/ASSET_SOURCES.md).
+Optional assets: put official ZIPs in `incoming_assets/`, run inventory, review licenses and exact files, fill `config/asset_mapping.json`, then prepare. Each mapping requires `reviewed: true`, `license_id: "CC0-1.0"`, exact source/destination/usage and SHA-256. Optional frame dimensions use the first verified frame only; no guessed animation slicing. Missing/unverified mapping retains native fallback. [V2 Vietnamese guide](ASSET_SETUP_GUIDE_V2_VI.md), [license audit](docs/ASSET_LICENSE_AUDIT.md), [art bible](docs/CHARACTER_ART_BIBLE.md), [animation matrix](docs/CHARACTER_ANIMATION_MATRIX.csv), [publisher links](docs/ASSET_SOURCES.md).
 
 ```sh
+python3 tools/inspect_character_pack.py --inventory
 python3 tools/asset_inventory.py
-python3 tools/prepare_assets.py
+python3 tools/prepare_assets.py --mapping config/asset_mapping.json
 ```
 
 ## Development notes
 
-AI-assisted implementation with Codex. Actual bug fixes and test-driver defects are recorded in [case studies](docs/DEBUGGING_CASE_STUDIES.md), without invented incidents or benchmark deltas. Documentation describes the implemented tree rather than a speculative architecture. Remaining release checks: blind play duration, subjective art/audio/balance review, target M1 profiling, hosted CI, Windows/Linux execution and public signing/notarization. No public repository or remote upload has been created.
+AI-assisted implementation with Codex. Actual bug fixes and test-driver defects are recorded in [case studies](docs/DEBUGGING_CASE_STUDIES.md), without invented incidents or benchmark deltas. Documentation describes the implemented tree rather than a speculative architecture. Remaining release checks: blind play duration, subjective art/audio/balance review, target M1 profiling, hosted CI, Windows/Linux execution and public signing/notarization. Repository: [james1507/shadow-protocol](https://github.com/james1507/shadow-protocol). Release target: [v2.0.0](https://github.com/james1507/shadow-protocol/releases/tag/v2.0.0). Verification details and limitations remain in IMPLEMENTATION_STATUS.md.

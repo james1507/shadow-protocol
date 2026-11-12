@@ -13,6 +13,11 @@ SOURCES = {name: f"https://kenney.nl/assets/{name}" for name in (
     "top-down-shooter", "sci-fi-rts", "ui-pack-sci-fi", "sci-fi-sounds",
     "interface-sounds", "impact-sounds", "game-icons", "music-jingles")}
 
+SOURCES.update({
+    "riclmbr_neon_city": "https://riclmbr.itch.io/pixel-cyberpunk-neon-city-300-top-down-cyberpunk-assets",
+    "murphysdad_scifi_facility": "https://murphysdad.itch.io/sci-fi-facility",
+})
+
 
 def safe_extract(archive, target):
     """Reject traversal, symlinks, bombs, and nonportable member names before writes."""
@@ -72,7 +77,7 @@ def inventory():
         writer.writerows(rows)
     lines = ["# Asset sources", "", "## Included original work", "",
              "All current visuals are original engine-native geometry, runtime-generated tiles,",
-             "and icon.svg. Audio uses original synthesized PCM tones. Source code and original",
+             "original pixel sprites (tools/build_spriteframes.gd), and icon.svg. Audio uses original synthesized PCM tones. Source code and original",
              "art are MIT licensed (LICENSE). Godot built-in font remains under engine licenses.",
              "No third-party packs currently adopted. No external runtime downloads.", "",
              "## Optional publisher pages (not included; archive license must be reviewed)", ""]

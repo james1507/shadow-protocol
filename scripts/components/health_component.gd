@@ -2,6 +2,7 @@ class_name HealthComponent
 extends Node
 
 signal health_changed(current: float, maximum: float)
+signal damaged
 signal died
 @export var maximum: float = 100.0
 @export var invulnerability: float = 0.6
@@ -17,6 +18,7 @@ func apply_damage(amount: float, _source_id: String = "") -> bool:
 		return false
 	current = maxf(0.0, current - amount)
 	immunity = invulnerability
+	damaged.emit()
 	health_changed.emit(current, maximum)
 	if current <= 0.0:
 		die()

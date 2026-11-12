@@ -40,7 +40,7 @@ func run() -> void:
 		var result := {"agents":count,"frames":samples.size(),"mean_ms":average,"p95_ms":samples[int(samples.size()*0.95)],"max_ms":samples[-1],"fps":1000.0/average}
 		output.append(result)
 		print("BENCHMARK ",JSON.stringify(result))
-	var file := FileAccess.open("res://docs/benchmark.json",FileAccess.WRITE)
-	file.store_string(JSON.stringify({"renderer":RenderingServer.get_video_adapter_name(),"os":OS.get_name(),"resolution":[1280,720],"debug_overlay":false,"vsync":true,"samples":output},"  "))
+	var file := FileAccess.open("res://docs/v2-benchmark.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify({"version":"2.0.0","visual_mode":"ORIGINAL_FALLBACK","cpu":OS.get_processor_name(),"renderer":RenderingServer.get_video_adapter_name(),"os":OS.get_name(),"resolution":[1280,720],"debug_overlay":false,"vsync":true,"samples":output},"  "))
 	file.close()
 	quit()

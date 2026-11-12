@@ -10,7 +10,7 @@ func attack(source: PlayerController) -> bool:
 	if source.health.dead or source.attack_timer > 0.0:
 		return false
 	source.attack_timer = source.stats.attack_cooldown
-	source.get_node("AnimationPlayer").play("attack")
+	source.visual.play_attack()
 	actor = source
 	windup = 0.15
 	hit_targets.clear()

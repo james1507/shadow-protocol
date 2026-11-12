@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "visual_mode": "ORIGINAL_FALLBACK",
+  "packs": {
+    "riclmbr_neon_city": {
+      "url": "https://riclmbr.itch.io/pixel-cyberpunk-neon-city-300-top-down-cyberpunk-assets",
+      "expected_license": "CC0-1.0",
+      "archive_available": false,
+      "license_verified": false,
+      "source_archive_sha256": null,
+      "status": "ABSENT",
+      "evidence": []
+    },
+    "murphysdad_scifi_facility": {
+      "url": "https://murphysdad.itch.io/sci-fi-facility",
+      "expected_license": "CC0-1.0",
+      "archive_available": false,
+      "license_verified": false,
+      "source_archive_sha256": null,
+      "status": "ABSENT",
+      "evidence": []
+    },
+    "original": {
+      "status": "INCLUDED",
+      "license": "MIT",
+      "license_verified": true,
+      "evidence": [
+        "LICENSE",
+        "tools/build_spriteframes.gd"
+      ],
+      "raw_redistribution_allowed": true
+    }
+  }
+}

@@ -3,7 +3,7 @@
 ## Included original work
 
 All current visuals are original engine-native geometry, runtime-generated tiles,
-and icon.svg. Audio uses original synthesized PCM tones. Source code and original
+original pixel sprites (tools/build_spriteframes.gd), and icon.svg. Audio uses original synthesized PCM tones. Source code and original
 art are MIT licensed (LICENSE). Godot built-in font remains under engine licenses.
 No third-party packs currently adopted. No external runtime downloads.
 
@@ -17,6 +17,8 @@ No third-party packs currently adopted. No external runtime downloads.
 - impact-sounds: https://kenney.nl/assets/impact-sounds
 - game-icons: https://kenney.nl/assets/game-icons
 - music-jingles: https://kenney.nl/assets/music-jingles
+- riclmbr_neon_city: https://riclmbr.itch.io/pixel-cyberpunk-neon-city-300-top-down-cyberpunk-assets
+- murphysdad_scifi_facility: https://murphysdad.itch.io/sci-fi-facility
 
 ## Intake audit
 

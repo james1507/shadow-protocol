@@ -15,3 +15,8 @@ VSync caps throughput near 120Hz; small differences between rows are scheduling 
 Implementation avoids per-frame path rebuilding (0.25-second repath), bounds debug events to 50, emits sprint noise at 0.6-second intervals, limits EMP lifetime, expires projectiles after two seconds, and frees audio one-shots on finish. These are code facts, not measured optimization deltas.
 
 For meaningful follow-up: run target M1 at normal play, enable F3 separately (13 cone rays per agent per redraw), sample each full level with effects and camera movement, collect longer percentile distributions and transition latency. Use Godot Profiler as described in REPRODUCE_WORKFLOWS.md.
+
+
+## V2 original character migration
+
+Actual new graphical samples: [v2-benchmark.json](v2-benchmark.json). Apple M2 Pro, macOS Compatibility renderer, 1280x720 window / 640x360 viewport, F3 off, VSync requested, 10/20/40 active guards. One-second warmup, three-second process-frame sample per count. Report mean/p95/max intervals as measured; derived FPS is engine cadence and not an external display-refresh measurement. No controlled before/after gain claimed. M1 and long-session behavior remain unmeasured.

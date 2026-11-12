@@ -28,7 +28,7 @@ var use_navigation_agent: bool = false
 var stuck_time: float = 0.0
 var previous_position: Vector2
 var recovery_attempted: bool = false
-var body_texture: Texture2D
+var visual: CharacterVisual
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -37,7 +37,9 @@ func _ready() -> void:
 	target = patrol[0]
 	last_seen = position
 	previous_position = position
-	body_texture = AssetLibrary.texture({"guard": "guard_body", "heavy": "heavy_body", "camera": "camera", "drone": "drone_body"}[kind])
+	visual = get_node_or_null("CharacterVisual")
+	if visual != null:
+		visual.set_profile(CharacterVisualRegistry.resolve(visual.actor_key))
 	EventBus.noise_emitted.connect(hear)
 	EventBus.alert_raised.connect(receive_alert)
 
@@ -45,6 +47,8 @@ func transition(next: String, reason: String) -> bool:
 	if next not in STATES or next == state or (state == "STUNNED" and stun_time > 0.0 and next != "STUNNED"):
 		return false
 	EventBus.record(str(name), state, next, reason)
+	if next == "ATTACK" and visual != null:
+		visual.play_attack()
 	state = next
 	state_time = 0.0
 	attack_clock = 0.0
@@ -84,6 +88,8 @@ func stun(seconds: float) -> void:
 	velocity = Vector2.ZERO
 	attack_clock = 0.0
 	attack_fired = false
+	if visual != null:
+		visual.set_status(&"stunned", true)
 
 func _physics_process(delta: float) -> void:
 	clock += delta
@@ -95,6 +101,7 @@ func _physics_process(delta: float) -> void:
 		if stun_time <= 0.0:
 			detection = 0.0
 			transition("SEARCH", "stun expired")
+		update_visual()
 		queue_redraw()
 		return
 	if not is_instance_valid(level.player):
@@ -137,6 +144,7 @@ func _physics_process(delta: float) -> void:
 				if attack_clock >= config.windup + config.attack_cooldown:
 					attack_clock = 0.0
 					attack_fired = false
+					if visual != null: visual.play_attack()
 		"SEARCH":
 			target = last_seen
 			if position.distance_to(target) > 15.0:
@@ -161,6 +169,7 @@ func _physics_process(delta: float) -> void:
 		stuck_time = 0.0
 		recovery_attempted = false
 	previous_position = position
+	update_visual()
 	queue_redraw()
 
 func update_sensing(delta: float, can_see: bool, player: PlayerController) -> void:
@@ -221,43 +230,29 @@ func strike(player: PlayerController) -> void:
 	else:
 		player.health.apply_damage(config.damage, str(get_instance_id()))
 
+func update_visual() -> void:
+	if visual == null: return
+	visual.set_facing(facing)
+	visual.set_motion(velocity.length() > 1.0, state == "CHASE", false)
+	visual.set_status(&"stunned", state == "STUNNED")
+	visual.set_status(&"alert", state in ["SUSPICIOUS", "CHASE", "ATTACK"])
+
 func _draw() -> void:
-	var orange := Color("ffb454")
-	var color := Color("f56b73") if kind == "heavy" else orange
-	if state == "STUNNED":
-		color = Color("96a8b8")
-	var radius: float = 12.0 if kind == "heavy" else 9.0
-	draw_circle(Vector2(2, 5), radius + 2, Color(0,0,0,0.35))
+	var orange := Color("f4b860")
 	if kind == "camera":
 		draw_rect(Rect2(-9,-7,18,14), Color("75889a"))
-		draw_line(Vector2.ZERO, facing * 16, color, 5)
-	elif kind == "drone":
-		draw_circle(Vector2(-10,0), 6, Color("4b6a82"))
-		draw_circle(Vector2(10,0), 6, Color("4b6a82"))
-		draw_rect(Rect2(-6,-7,12,14), Color("a6becf"))
-		draw_arc(Vector2.ZERO, 18, clock * 4, clock * 4 + PI, 16, color, 1)
-	else:
-		draw_set_transform(Vector2.ZERO, facing.angle())
-		draw_rect(Rect2(-radius,-radius,radius*2,radius*2), Color("5f493e"))
-		draw_rect(Rect2(-5,-7,9,14), color)
-		draw_rect(Rect2(4,-3,10,6), Color("d7c4a3"))
-		if kind == "heavy":
-			draw_rect(Rect2(-9,-11,7,22), Color("8294a0"))
-		draw_set_transform(Vector2.ZERO)
-	if state == "STUNNED":
-		draw_arc(Vector2(0,-13), 5, clock * 3, clock * 3 + PI * 1.6, 16, Color("43d9e8"), 2)
+		draw_line(Vector2.ZERO, facing * 16, Color("96a8b8") if state == "STUNNED" else orange, 5)
 	if detection > 0.02:
-		draw_rect(Rect2(-12,-20,24,3), Color("0b1421"))
-		draw_rect(Rect2(-12,-20,24*detection,3), Color("f56b73") if detection >= 1.0 else orange)
+		draw_rect(Rect2(-12,-38,24,3), Color("0b1421"))
+		draw_rect(Rect2(-12,-38,24*detection,3), Color("f56b73") if detection >= 1.0 else orange)
 	if state == "ATTACK" and attack_clock < config.windup:
 		draw_arc(Vector2.ZERO, config.attack_range, facing.angle()-0.6, facing.angle()+0.6, 20, Color("f56b73"), 2)
 	if GameManager.debug_enabled and OS.is_debug_build():
 		draw_debug()
-	if body_texture != null:
-		draw_set_transform(Vector2.ZERO, facing.angle())
-		draw_texture_rect(body_texture, Rect2(-radius,-radius,radius*2,radius*2),false)
 
 func draw_debug() -> void:
+	if visual != null:
+		draw_string(ThemeDB.fallback_font, Vector2(-20,-51), visual.visual_state() + "/" + visual.direction, HORIZONTAL_ALIGNMENT_LEFT,-1,8,Color("b29bff"))
 	var points := PackedVector2Array([Vector2.ZERO])
 	for i in range(13):
 		var angle: float = facing.angle() - deg_to_rad(config.fov * 0.5) + deg_to_rad(config.fov) * i / 12.0
@@ -278,4 +273,4 @@ func draw_debug() -> void:
 		draw_polyline(local, Color("43d9e8"),1)
 	for waypoint in patrol:
 		draw_circle(waypoint-position,3,Color("1dbfaf"),false,1)
-	draw_string(ThemeDB.fallback_font,Vector2(-20,-26),state,HORIZONTAL_ALIGNMENT_LEFT,-1,9,Color.WHITE)
+	draw_string(ThemeDB.fallback_font,Vector2(-20,-41),state,HORIZONTAL_ALIGNMENT_LEFT,-1,9,Color.WHITE)
